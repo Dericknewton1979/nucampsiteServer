@@ -1,19 +1,24 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const favoriteSchema = new Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  campsites: [
-    {
+const favoriteSchema = new Schema(
+  {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Campsite",
+      ref: "User",
+      required: true,
     },
-  ],
-});
+    campsites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Campsite",
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Favorite = mongoose.model("Favorite", favoriteSchema);
 
